@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=1280">
+    <title>Company Profile PT. ASA BESTARI KASIH AMERTA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ========================================= */
+        /* CSS UNTUK GANTI BAHASA (LANG SWITCHER)    */
+        /* ========================================= */
+        /* Tombol Ganti Bahasa di Header */
+        .lang-switch-container {
+            margin-left: auto; /* Dorong ke kanan */
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-lang {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-lang:hover, .btn-lang.active {
+            background-color: #0056b3;
+            color: white;
+            border-color: #0056b3;
+        }
+
+        /* LOGIKA TAMPILAN BAHASA */
+        /* Jika body punya class 'mode-id', sembunyikan elemen jepang */
+        body.mode-id .lang-jp {
+            display: none !important;
+        }
+
+        /* Jika body punya class 'mode-jp', sembunyikan elemen indonesia */
+        body.mode-jp .lang-id {
+            display: none !important;
+        }
+        
+        /* Style agar elemen jepang muncul (bisa block atau inline) */
+        .lang-jp {
+            /* Warna teks sedikit beda saat edit biar gampang membedakan, nanti bisa dihapus color-nya */
+            /* color: #0056b3; */ 
+        }
+
+        /* ========================================= */
+        /* CSS TAMBAHAN UNTUK FACEBOOK               */
+        /* ========================================= */
+        .side-fb { background: #1877F2; } /* Warna Biru Facebook */
+        
+        /* ========================================= */
+        /* CSS WELCOME SCREEN                        */
+        /* ========================================= */
+        #welcome-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #ffffff; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            flex-direction: column; transition: opacity 1s ease-out;
+        }
+        .welcome-content {
+            text-align: center; padding: 20px; max-width: 400px;
+            opacity: 0; animation: introAnimation 2.5s ease-in-out forwards;
+        }
+        .welcome-logo { width: 120px; margin-bottom: 20px; }
+        .welcome-title {
+            font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 700;
+            color: #333; margin-bottom: 10px;
+        }
+        .welcome-subtitle {
+            font-family: 'Inter', sans-serif; font-size: 14px; color: #666; margin-bottom: 30px;
+        }
+        @keyframes introAnimation {
+            0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+            40% { opacity: 1; transform: scale(1.05) translateY(0); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+    </style>
+</head>
+<body class="mode-id">
+
+<div id="welcome-overlay">
+    <div class="welcome-content">
+        <img src="images/logo.png" alt="Logo LPK Yoriso" class="welcome-logo">
+        
+        <h1 class="welcome-title lang-id">SELAMAT DATANG</h1>
+        <p class="welcome-subtitle lang-id">Di Website Resmi PT. ASA BESTARI KASIH AMERTA</p>
+
+        <h1 class="welcome-title lang-jp">ようこそ</h1>
+        <p class="welcome-subtitle lang-jp">PT. ASA BESTARI KASIH AMERTA 公式ウェブサイトへ</p>
+    </div>
+</div>
+
+<header>
+    <div class="header-content">
+        <img src="images/logo.png" class="logo" alt="Logo PT. ASA BESTARI KASIH AMERTA">
+        <span class="brand-name lang-id">PT. ASA BESTARI KASIH AMERTA</span>
+        <span class="brand-name lang-jp">株式会社ASA BESTARI KASIH AMERTA （日本語表記）</span>
+
+        <div class="lang-switch-container">
+            <button class="btn-lang active" onclick="setLanguage('id')">🇮🇩 ID</button>
+            <button class="btn-lang" onclick="setLanguage('jp')">🇯🇵 JP</button>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <aside class="sidebar-left">
+        <nav>
+            <ul>
+                <li>
+                    <a class="nav-link active" data-target="company">
+                        <span class="lang-id">Company Profile</span>
+                        <span class="lang-jp">会社概要</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" data-target="program">
+                        <span class="lang-id">Program</span>
+                        <span class="lang-jp">プログラム</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" data-target="legal">
+                        <span class="lang-id">Legalitas</span>
+                        <span class="lang-jp">法的書類</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" data-target="team">
+                        <span class="lang-id">Tim & Struktur Organisasi</span>
+                        <span class="lang-jp">チームと組織図</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" data-target="location">
+                        <span class="lang-id">Lokasi Kantor</span>
+                        <span class="lang-jp">オフィスの場所</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="social-sidebar-box">
+            <h4 class="lang-id">Hubungi Kami</h4>
+            <h4 class="lang-jp">お問い合わせ</h4>
+
+            <div class="social-links-container">
+                <a href="https://wa.me/6289670690060?text=Halo%20LPK%20Yorisoi" class="side-btn side-wa" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA"> WhatsApp
+                </a>
+                <a href="https://www.instagram.com/lpk_yci/" class="side-btn side-ig" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG"> Instagram
+                </a>
+                <a href="https://www.tiktok.com/@lpk_yci" class="side-btn side-tt" target="_blank">
+                    <img src="https://www.svgrepo.com/show/333611/tiktok.svg" alt="TT" style="filter: invert(1);"> TikTok
+                </a>
+                
+                <a href="https://www.facebook.com/p/Yorisoi-Caregiver-Indonesia-100076191255802/" class="side-btn side-fb" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="FB"> Facebook
+                </a>
+
+            </div>
+        </div>
+    </aside>
+
+    <main>
+        <section id="company" class="section active">
+            <h2 class="lang-id">PT. ASA BESTARI KASIH AMERTA</h2>
+            <h2 class="lang-jp">株式会社ASA BESTARI KASIH AMERTA</h2>
+
+            <div class="profile-layout">
+                <img src="images/profil.jpg" class="photo-lg" alt="Profil LPK">
+                <div class="text-block">
+                    <div class="lang-id">
+                        <p>
+                            Perusahaan yang bergerak dalam bidang penempatan pekerja migran Indonesia. 
+                            Perusahaan telah berkomitmen untuk memberikan layanan penempatan yang berkualitas dan terpercaya bagi para pekerja migran Indonesia yang mencari kesempatan kerja di luar negeri.
+                            Perusahaan ini berlokasi strategis di Kabupaten Sragen, Provinsi Jawa Tengah, memudahkan akses bagi calon pekerja migran dari berbagai daerah.
+                        </p>
+                        <p>
+                            Kami hadir sebagai solusi bagi generasi muda Indonesia yang ingin bekerja di Jepang
+                            dengan proses yang jelas, aman, and sesuai regulasi pemerintah Indonesia maupun Jepang.
+                            Seluruh peserta dibina tidak hanya secara teknis, tetapi juga dari sisi mental,
+                            etika, dan budaya kerja Jepang.
+                        </p>
+                    </div>
+
+                    <div class="lang-jp">
+                        <p>当社は、インドネシア人労働者の海外送出し事業を行う企業です。 海外での就労機会を求める方々に対し、高品質かつ信頼できるサービスを提供することに尽力しています。 中部ジャワ州スラゲン県という好立地に拠点を置き、様々な地域からの候補者がアクセスしやすい環境を整えています。</p>
+                        <p>当社は、日本での就労を希望するインドネシアの若者に対し、両国政府の規制に準拠した明確かつ安全なプロセスを提供します。 参加者に対しては、技術面だけでなく、精神面、礼儀、日本の労働文化についても指導・育成を行っています。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h3 class="lang-id">Visi</h3>
+            <h3 class="lang-jp">ビジョン</h3>
+
+            <p class="lang-id">
+                Menjadi mitra terpercaya bagi pekerja migran Indonesia dalam mencari kesempatan kerja yang aman, bermartabat, dan berkelanjutan di luar negeri.
+            </p>
+            <p class="lang-jp">
+                安全で尊厳のある、持続可能な海外就労の機会を求めるインドネシア人労働者にとって、信頼されるパートナーとなること。
+            </p>
+
+            <h3 class="lang-id">Misi</h3>
+            <h3 class="lang-jp">ミッション</h3>
+
+            <ul class="clean-list lang-id">
+                <li>Menyediakan layanan penempatan pekerja migran Indonesia yang berkualitas, aman, dan sesuai dengan peraturan yang berlaku.</li>
+                <li>Memberikan pelatihan dan persiapan yang komprehensif.</li>
+                <li>Memastikan keamanan, kesejahteraan, dan hak-hak pekerja migran.</li>
+                <li>Membangun kerjasama yang erat dengan pemerintah dan mitra.</li>
+                <li>Mendukung pengembangan ekonomi dan sosial di komunitas asal.</li>
+            </ul>
+
+            <ul class="clean-list lang-jp">
+                <li>関連法規を遵守し、高品質かつ安全なインドネシア人労働者の送出しサービスを提供すること。</li>
+                <li>包括的な研修と事前準備を提供すること。</li>
+                <li>移民労働者の安全、福祉、権利を確保すること。</li>
+                <li>政府およびパートナーと緊密な協力関係を構築すること。</li>
+                <li>出身地域の経済的および社会的発展を支援すること。</li>
+            </ul>
+
+            <h3>LPK YORISOI CAREGIVER INDONESIA</h3> 
+            
+            <div class="lang-id">
+                <p>
+                    Didirikan pada bulan November 2021 adalah lembaga pelatihan bahasa jepang yang bernaung dibawah PT. Asa Bestari Kasih Amerta 
+                    yang menjadi spesialis pelatihan bahasa Jepang dan pengetahuan tentang Caregiver (Perawat Lansia).
+                </p>
+                <p>Kami membuka kesempatan bagi putra-putri Indonesia baik lulusan SMA/K Umum/Keperawatan, D3/S1 yang ingin menjadi Caregiver di Jepang dengan Program Tokutei Ginou (SSW).</p>
+                <p>Meningkatnya jumlah kebutuhan pekerja asing dari Indonesia di Jepang, membuat kami tergugah untuk menjadi Jembatani mimpi mereka.</p>
+                <p>Maka dari itu kami membentuk LPK Yorisoi Caregiver Indonesia, untuk mewujudkan mimpi mereka bekerja di Jepang.</p>
+            </div>
+
+            <div class="lang-jp">
+                <p>2021年11月に設立された当機関は、PT. Asa Bestari Kasih Amertaの傘下にあり、日本語教育および介護（高齢者ケア）に関する知識の習得に特化した研修機関です</p>
+                <p>当社は、特定技能（SSW）制度を通じて日本で介護職として働くことを希望する、SMA/SMK（一般・看護）、D3、S1卒業資格を持つインドネシアの若者たちへ、その機会を提供しています。</p>
+                <p>日本におけるインドネシア人労働者への需要が高まる中、私たちは彼らの夢の「架け橋」となりたいという強い思いを抱きました。</p>
+                <p>そこで、日本で働くという彼らの夢を実現するために、LPK Yorisoi Caregiver Indonesiaを設立いたしました。</p>
+            </div>
+
+            <h3 class="lang-id">Inovasi yang sedang dikembangkan</h3>
+            <h3 class="lang-jp">開発中のイノベーション</h3>
+
+            <p class="lang-id">
+                Kami merancang ekosistem terpadu yang mencakup pembekalan bahasa Jepang, pelatihan budaya kerja, serta proses pemberangkatan melalui jalur legal dan resmi.
+            </p>
+            <p class="lang-jp">
+                当社は、日本語教育、労働文化の研修、そして正規・合法ルートによる送出しプロセスを網羅した、統合的なエコシステムを構築しています。
+            </p>
+
+            <h3 class="lang-id">Ekspansi kedepan</h3>
+            <h3 class="lang-jp">今後の展開</h3>
+
+            <p class="lang-id">
+                Ke depan, kami berkomitmen untuk memperluas jangkauan ke lebih banyak sektor pekerjaan dan wilayah di Jepang.
+            </p>
+            <p class="lang-jp">
+                今後は、日本におけるより多くの職種や地域へと事業を拡大していくことに尽力いたします。
+            </p>
+
+        </section>
+
+        <section id="program" class="section">
+            <h2 class="lang-id">Program Pelatihan</h2>
+            <h2 class="lang-jp">研修プログラム (Program Pelatihan)</h2>
+
+            <p class="lang-id">
+                Program pelatihan di LPK Yorisoi Caregiver Indonesia dirancang secara intensif untuk memastikan peserta siap secara bahasa, keterampilan, mental, dan budaya kerja.
+            </p>
+            <p class="lang-jp">
+                LPK Yorisoi Caregiver Indonesiaの研修プログラムは、語学、技能、精神面、そして労働文化の面で参加者が万全の準備を整えられるよう、集中的に設計されています。
+            </p>
+
+            <h3 class="lang-id">Ruang Lingkup Program</h3>
+            <h3 class="lang-jp">プログラムの範囲 (Ruang Lingkup)</h3>
+
+            <ul class="clean-list lang-id">
+                <li>Pelatihan Bahasa Jepang tingkat dasar hingga menengah (N4).</li>
+                <li>Pembinaan sikap kerja, etika, dan budaya kerja Jepang.</li>
+                <li>Pelatihan teknis caregiver sesuai standar Jepang.</li>
+                <li>Pelatihan teknis bidang lain selain caregiver.</li>
+                <li>Simulasi ujian, wawancara, dan kehidupan kerja.</li>
+                <li>Pendampingan administrasi dan keberangkatan.</li>
+            </ul>
+            <ul class="clean-list lang-jp">
+                <li>初級から中級（N4レベル）までの日本語研修。</li>
+                <li>勤務態度、マナー、日本の労働文化に関する指導。</li>
+                <li>日本の基準に準拠した介護技能研修。</li>
+                <li>介護以外の分野における技術研修。</li>
+                <li>各種試験、面接、および就労生活のシミュレーション。</li>
+                <li>事務手続きおよび渡航のサポート。</li>
+            </ul>
+
+            <h3 class="lang-id">Dokumentasi Kegiatan</h3>
+            <h3 class="lang-jp">活動の記録 (Dokumentasi)</h3>
+            
+            <div class="image-grid">
+                <div class="img-card"><img src="images/kelas.jpg" alt="Kegiatan Kelas"><p class="lang-id">Pelatihan Bahasa</p><p class="lang-jp">言語研修</p></div>
+                <div class="img-card"><img src="images/praktik.jpg" alt="Praktik Kerja"><p class="lang-id">Praktik Jidousha Seibi</p><p class="lang-jp">自動車整備実習</p></div>
+                <div class="img-card"><img src="images/praktik3.jpg" alt="Praktik Kerja 3"><p class="lang-id">Foto Bersama Di Panti</p><p class="lang-jp">施設での集合写真</p></div>
+                <div class="img-card"><img src="images/praktik4.jpg" alt="Kelulusan"><p class="lang-id">Kelas Praktik Caregiver</p><p class="lang-jp">介護実習クラス</p></div>
+                <div class="img-card"><img src="images/praktik2.jpg" alt="Praktik Kerja 2"><p class="lang-id">Praktik Caregiver</p><p class="lang-jp">介護実習</p></div>
+                <div class="img-card"><img src="images/testimoni.jpg" alt="Testimoni"><p class="lang-id">Praktik Jidousha Seibi</p><p class="lang-jp">自動車整備実習</p></div>
+            </div>
+
+            <h3 class="lang-id">Testimoni Peserta</h3>
+            <h3 class="lang-jp">参加者の声</h3>
+            <div class="testimonial-box">
+                <p class="lang-id">“Pelatihan di LPK Yorisoi Caregiver Indonesia sangat disiplin dan terarah...”</p>
+                <p class="lang-jp">“LPK Yorisoi Caregiver Indonesiaでの研修は、非常に規律正しく、明確な目標を持って行われています...”</p>
+            </div>
+        </section>
+
+        <section id="legal" class="section">
+            <h2 class="lang-id">Legalitas & Kerja Sama</h2>
+            <h2 class="lang-jp">合法性と提携</h2>
+
+            <p class="lang-id">
+                PT. ASA BESTARI KASIH AMERTA & LPK Yorisoi Caregiver Indonesia beroperasi secara resmi dan mematuhi seluruh ketentuan hukum yang berlaku di Indonesia.
+            </p>
+            <p class="lang-jp">
+                PT. ASA BESTARI KASIH AMERTA & LPK Yorisoi Caregiver India は正式に運営されており、インドネシアで適用されるすべての法律を遵守しています。
+            </p>
+
+            <h3 class="lang-id">Dokumen Legal</h3>
+            <h3 class="lang-jp">法的書類 (Dokumen Legal)</h3>
+
+            <ul class="clean-list lang-id">
+                <li>Nomor Induk Berusaha (NIB) yang terdaftar resmi.</li>
+                <li>Izin Aktivitas Penyeleksian Dan Penempatan Tenaga Kerja Luar Negeri</li>
+                <li>Izin Operasional Lembaga Pelatihan Kerja.</li>
+                <li>Dokumen Akreditasi Nasional.</li>
+                <li>Dokumen Akreditasi International.</li>
+            </ul>
+            <ul class="clean-list lang-jp">
+                <li>正式に登録された事業基本番号 (NIB)。</li>
+                <li>海外労働力選抜・派遣活動許可証。</li>
+                <li>職業訓練機関 (LPK) の運営許可証。</li>
+                <li>国家認定証。</li>
+                <li>国際認定証。</li>
+            </ul>
+
+            <div class="image-grid">
+                <img src="images/izin.jpg" alt="Izin Operasional">
+                <img src="images/nib.jpg" alt="NIB">
+                <img src="images/akreditasi.jpg" alt="Akreditasi">
+                <img src="images/akreditasi_int.jpg" alt="Akreditasi Internasional">
+            </div>
+        </section>
+
+        <section id="team" class="section">
+            <div class="org-structure">
+                <h2 class="lang-id">Tim & Struktur Organisasi</h2>
+                <h2 class="lang-jp">チームと組織図</h2>
+
+                <div class="divisi-wrapper">
+                    <div class="divisi-tag lang-id">Top Management</div>
+                    <div class="divisi-tag lang-jp">トップマネジメント</div>
+                    <div class="cards-container">
+                        <div class="card-member">
+                            <span class="role lang-id">Direktur Utama</span>
+                            <span class="role lang-jp">代表取締役</span>
+                            <span class="name">SATRIO UTOMO</span>
+                        </div>
+                    </div>
+                </div>
+
+                       <div class="divisi-wrapper">
+                    <div class="divisi-tag lang-id">Wakil Direktur</div>
+                    <div class="divisi-tag lang-jp">副代表</div>
+                    <div class="cards-container">
+                        <div class="card-member wakil">
+                            <span class="role">WAKIL DIREKTUR</span>
+                            <span class="name lang-id">NURUL HIDAYAT</span>
+                            <span class="name lang-jp">ヌル・ヒダヤット</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divisi-wrapper">
+                    <div class="divisi-tag lang-id">Divisi Marketing Kandidat Lengkap</div>
+                    <div class="divisi-tag lang-jp">マーケティング部門</div>
+                    <div class="cards-container">
+                        <div class="card-member coordinator">
+                            <span class="role">MARKETING LENGKAP</span>
+                            <span class="name">VICKO VERNANDA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divisi-wrapper">
+            <div class="divisi-tag lang-id">Divisi Marketing Siswa</div>
+            <div class="divisi-tag lang-jp">学生マーケティング部門</div>
+            
+            <div class="coordinator-row">
+                <div class="card-member coordinator">
+                    <span class="role lang-id">Koordinator</span>
+                    <span class="role lang-jp">コーディネーター</span>
+                    <span class="name">KHOIRUN NISA</span>
+                </div>
+            </div>
+
+            <div class="staff-row">
+                <div class="card-member">
+                    <span class="role lang-id">Staff</span>
+                    <span class="role lang-jp">スタッフ</span>
+                    <span class="name">RIZKY</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisi-wrapper">
+            <div class="divisi-tag lang-id">Divisi Eigyo</div>
+            <div class="divisi-tag lang-jp">営業部門</div>
+
+            <div class="coordinator-row">
+                <div class="card-member coordinator">
+                    <span class="role lang-id">Koordinator</span>
+                    <span class="role lang-jp">コーディネーター</span>
+                    <span class="name">MUNAWAROH</span>
+                </div>
+            </div>
+
+            <div class="staff-row">
+                <div class="card-member">
+                    <span class="role lang-id">Staf Eigyo</span>
+                    <span class="role lang-jp">営業スタッフ</span>
+                    <span class="name">MATSUMOTO EMIKO</span>
+                </div>
+                <div class="card-member">
+                    <span class="role lang-id">Staf Eigyo</span>
+                    <span class="role lang-jp">営業スタッフ</span>
+                    <span class="name">PRASTOMO</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisi-wrapper">
+            <div class="divisi-tag lang-id">Divisi Administrasi</div>
+            <div class="divisi-tag lang-jp">総務部</div>
+
+            <div class="coordinator-row">
+                <div class="card-member coordinator">
+                    <span class="role lang-id">Koordinator</span>
+                    <span class="role lang-jp">コーディネーター</span>
+                    <span class="name">DIMAS BAYU PRATAMA</span>
+                </div>
+            </div>
+
+            <div class="staff-row">
+                <div class="card-member">
+                    <span class="role lang-id">Staf Admin</span>
+                    <span class="role lang-jp">総務スタッフ</span>
+                    <span class="name">BINTANG NUR CAHYANI</span>
+                </div>
+                <div class="card-member">
+                    <span class="role lang-id">Staf Admin</span>
+                    <span class="role lang-jp">総務スタッフ</span>
+                    <span class="name">SEKAR SETYO K.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisi-wrapper">
+            <div class="divisi-tag lang-id">Divisi Instruktur</div>
+            <div class="divisi-tag lang-jp">インストラクター部門</div>
+
+            <div class="coordinator-row">
+                <div class="card-member coordinator">
+                    <span class="role lang-id">Koordinator</span>
+                    <span class="role lang-jp">コーディネーター</span>
+                    <span class="name">AGUS TRIANI</span>
+                </div>
+            </div>
+
+            <div class="staff-row">
+                <div class="card-member"><span class="role">Sensei JFT</span><span class="name">MAULIDA</span></div>
+                <div class="card-member"><span class="role">Sensei JFT</span><span class="name">VYTA</span></div>
+                <div class="card-member"><span class="role">Sensei JFT</span><span class="name">PRASSTOMO</span></div>
+                <div class="card-member"><span class="role">Sensei Kaiwa</span><span class="name">IWAN BUDI</span></div>
+                <div class="card-member"><span class="role">Sensei Kaiwa</span><span class="name">GUNTUR</span></div>
+                <div class="card-member"><span class="role">Sensei Kaiwa</span><span class="name">DIVA</span></div>
+                <div class="card-member"><span class="role">Sensei SSW</span><span class="name">ERNI</span></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+        <section id="location" class="section">
+    <h2 class="lang-id">Lokasi Kantor Kami</h2>
+    <h2 class="lang-jp">オフィスの場所 (Lokasi Kantor)</h2>
+    
+    <p class="lang-id">Klik gambar peta atau tombol di bawah untuk melihat navigasi langsung ke titik kantor kami.</p>
+    <p class="lang-jp">地図をクリックするか、下のボタンを押して、オフィスへのルートを確認してください。</p>
+    
+    <div class="location-grid">
+        <div class="location-card">
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126438.33806429584!2d110.93888636779366!3d-7.426768397395669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1e0f3d321049%3A0x3027a76e352bb30!2sSragen%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <h3 class="lang-id">Kantor Pusat (Sragen)</h3>
+            <h3 class="lang-jp">本社 (Kantor Pusat - Sragen)</h3>
+            
+            <p>Jl. Sumeni Margorejo, RT.43, Puro, Kec. Karangmalang, Kabupaten Sragen, Jawa Tengah 57222</p>
+            <a href="https://maps.google.com/?q=LPK+YORISOI+SRAGEN" target="_blank" class="map-link">Buka di Google Maps</a>
+        </div>
+
+        <div class="location-card">
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126438.33806429584!2d110.93888636779366!3d-7.426768397395669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1e0f3d321049%3A0x3027a76e352bb30!2sSragen%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <h3 class="lang-id">LPK YORISOI CABANG 2 SRAGEN</h3>
+            <h3 class="lang-jp">LPK YORISOI 第2支部 (Cabang 2)</h3>
+            
+            <p>Jl. Majapahit, Ngablak, Kroyo, Kec. Karangmalang, Kabupaten Sragen, Jawa Tengah 57211</p>
+            <a href="https://maps.google.com/?q=LPK+YORISOI+CABANG+2" target="_blank" class="map-link">Buka di Google Maps</a>
+        </div>
+
+        <div class="location-card">
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126438.33806429584!2d110.93888636779366!3d-7.426768397395669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a1e0f3d321049%3A0x3027a76e352bb30!2sSragen%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <h3 class="lang-id">LPK YORISOI CABANG 3 SRAGEN</h3>
+            <h3 class="lang-jp">LPK YORISOI 第3支部 (Cabang 3)</h3>
+            
+            <p>Jl. Gabugan - Sragen, Kebayanan 1, Gawan, Kec. Tanon, Kabupaten Sragen, Jawa Tengah 57277</p>
+            <a href="https://maps.google.com/?q=LPK+YORISOI+CABANG+3" target="_blank" class="map-link">Buka di Google Maps</a>
+        </div>
+    </div>
+</section>
+</main>
+</div>
+
+<footer>
+    <p><strong>LPK YORISOI CAREGIVER INDONESIA</strong></p>
+    <p class="lang-id">Alamat: Jl. Sumeni Margorejo, RT.43, Puro, Kec. Karangmalang, Kabupaten Sragen | Jalur Resmi & legal Bekerja Ke Kerja Jepang</p>
+    <p class="lang-jp">住所: Sragen | 日本での就労のための正規・合法ルート</p>
+    <p>© 2024 PT. ASA BESTARI KASIH AMERTA. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // =========================================
+    // SCRIPT GANTI BAHASA (MANUAL)
+    // =========================================
+    function setLanguage(lang) {
+        // Hapus class mode lama
+        document.body.classList.remove('mode-id', 'mode-jp');
+        
+        // Tambah class mode baru
+        document.body.classList.add('mode-' + lang);
+
+        // Update tombol aktif
+        const buttons = document.querySelectorAll('.btn-lang');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        // Cari tombol yang di-klik (berdasarkan onclick text) dan set active
+        // Simplenya kita toggle manual di visual button
+        if(lang === 'id') {
+            buttons[0].classList.add('active'); // Tombol pertama (ID)
+        } else {
+            buttons[1].classList.add('active'); // Tombol kedua (JP)
+        }
+    }
+
+    // =========================================
+    // SCRIPT ANIMASI OTOMATIS (INTRO)
+    // =========================================
+    window.addEventListener('load', function() {
+        const welcomeOverlay = document.getElementById('welcome-overlay');
+        setTimeout(function() {
+            if(welcomeOverlay) {
+                welcomeOverlay.style.opacity = '0';
+                setTimeout(function() {
+                    welcomeOverlay.style.display = 'none';
+                }, 1000); 
+            }
+        }, 3000);
+    });
+
+    // =========================================
+    // LOGIKA NAVIGASI TAB
+    // =========================================
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-target');
+            if (targetId) {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
