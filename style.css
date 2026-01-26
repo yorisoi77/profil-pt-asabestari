@@ -1,13 +1,14 @@
 /* ================= GLOBAL STYLES ================= */
 :root {
-    --primary-color: ##003399;    /* Biru Profesional */
-    --accent-color: #e67e22;     /* Oranye Yoriso */
+    --primary-color: #003399;    /* Biru Profesional */
+    --accent-color: #e67e22;     /* Oranye Yorisoi */
     --success-color: #27ae60;    /* Hijau Koordinator */
     --text-dark: #2c3e50;
     --text-muted: #666;
     --bg-body: #f4f7f6;
     --white: #ffffff;
     --shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
 }
 
 * {
