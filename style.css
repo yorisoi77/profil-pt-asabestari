@@ -701,3 +701,34 @@ footer p {
         grid-template-columns: 1fr; /* 1 gambar per baris */
     }
 }
+
+/* Container utama untuk tiap pimpinan */
+.leader-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+/* KOTAK FOTO: Ini yang bikin foto jadi kecil & rapi */
+.leader-photo-wrapper {
+    flex: 0 0 150px; /* Lebar foto dipatok 150px saja */
+    width: 150px;
+}
+
+.leader-img {
+    width: 100%;    /* Mengikuti lebar wrapper (150px) */
+    height: auto;   /* Proporsi tetap, tidak gepeng */
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #0056b3;
+}
+
+/* Tulisan Nama & Jabatan */
+.leader-name { font-size: 20px; margin: 0; color: #333; }
+.leader-role { font-size: 14px; color: #0056b3; font-weight: bold; margin: 5px 0 15px 0; }
+.leader-quote { font-style: italic; font-size: 15px; color: #666; border-left: 3px solid #ddd; padding-left: 15px; }
